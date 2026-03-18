@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/plantilla :: head}"></head>
+<body>
+<nav th:replace="~{layout/plantilla :: navbar}"></nav>
+<div class="container mt-4">
+    <h2>👥 Gestión de Clientes</h2>
+    <a th:href="@{/clientes/nuevo}" class="btn btn-primary mb-3">Registrar Cliente</a>
+    <table class="table table-bordered shadow-sm">
+        <thead class="table-dark">
+        <tr>
+            <th>Nombre Completo</th>
+            <th>Correo</th>
+            <th>Teléfono</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="c : ${clientes}">
+            <td th:text="${c.nombre}"></td>
+            <td th:text="${c.correo}"></td>
+            <td th:text="${c.telefono}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<footer th:replace="~{layout/plantilla :: footer}"></footer>
+</body>
+</html>

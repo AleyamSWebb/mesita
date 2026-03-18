@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/plantilla :: head}"></head>
+<body>
+<nav th:replace="~{layout/plantilla :: navbar}"></nav>
+<div class="container mt-5">
+    <div class="card shadow col-md-6 mx-auto">
+        <div class="card-header bg-primary text-white text-center"><h3>👤 Nuevo Cliente</h3></div>
+        <div class="card-body">
+            <form th:action="@{/clientes/guardar}" th:object="${cliente}" method="post">
+                <input type="hidden" th:field="*{idCliente}">
+                <div class="mb-3"><label class="form-label">Nombre:</label><input type="text" class="form-control" th:field="*{nombre}" required></div>
+                <div class="mb-3"><label class="form-label">Correo:</label><input type="email" class="form-control" th:field="*{correo}"></div>
+                <div class="mb-3"><label class="form-label">Teléfono:</label><input type="text" class="form-control" th:field="*{telefono}"></div>
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-success">Guardar</button>
+                    <a th:href="@{/clientes}" class="btn btn-secondary">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

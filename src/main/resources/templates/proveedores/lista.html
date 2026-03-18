@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/plantilla :: head}"></head>
+<body>
+<nav th:replace="~{layout/plantilla :: navbar}"></nav>
+
+<div class="container mt-4">
+    <h2>🚚 Gestión de Proveedores</h2>
+    <a th:href="@{/proveedores/nuevo}" class="btn btn-primary mb-3">Registrar Proveedor</a>
+    <table class="table table-striped">
+        <thead class="table-dark">
+        <tr>
+            <th>Empresa</th>
+            <th>Cédula Jurídica</th>
+            <th>Categoría</th>
+            <th>Teléfono</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="p : ${proveedores}">
+            <td th:text="${p.nombreEmpresa}"></td>
+            <td th:text="${p.cedulaJuridica}"></td>
+            <td th:text="${p.categoria}"></td>
+            <td th:text="${p.telefono}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<footer th:replace="~{layout/plantilla :: footer}"></footer>
+</body>
+</html>

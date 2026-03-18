@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/plantilla :: head}"></head>
+<body>
+<nav th:replace="~{layout/plantilla :: navbar}"></nav>
+<div class="container mt-4">
+    <h1 class="text-center mb-4">🥩 Inventario de Cortes</h1>
+    <div class="d-flex justify-content-between mb-3">
+        <a th:href="@{/productos/nuevo}" class="btn btn-success">+ Agregar Nuevo Corte</a>
+        <a th:href="@{/carrito/ver}" class="btn btn-outline-primary">🛒 Ver mi Carrito</a>
+    </div>
+    <table class="table table-striped table-hover shadow-sm">
+        <thead class="table-dark">
+        <tr>
+            <th>Nombre</th>
+            <th>Categoría</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="p : ${productos}">
+            <td th:text="${p.nombre}"></td>
+            <td th:text="${p.categoria}"></td>
+            <td th:text="'₡' + ${p.precio}"></td>
+            <td th:text="${p.cantidadStock}"></td>
+            <td>
+                <a th:href="@{/carrito/agregar/{id}(id=${p.idProducto})}" class="btn btn-primary btn-sm">🛒 Comprar</a>
+                <a th:href="@{/productos/editar/{id}(id=${p.idProducto})}" class="btn btn-warning btn-sm">Editar</a>
+                <a th:href="@{/productos/eliminar/{id}(id=${p.idProducto})}" class="btn btn-danger btn-sm" onclick="return confirm('¿Seguro?')">Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<footer th:replace="~{layout/plantilla :: footer}"></footer>
+</body>
+</html>
